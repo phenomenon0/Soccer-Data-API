@@ -21,5 +21,16 @@ def index():
     return 'Hello, World!'
 
 @app.route('/players')
-def soccerbase():
-    return {'Player': 'Country'}
+def get_players():
+    players = Player.query.all()
+    output = []
+    for player in players:
+        player_data = {'name': player.name, 'country': player.country, 'position': player.position}
+        output.append(player_data)
+    return {'players': output}
+
+@app.route('/players/<id>')
+def get_player(id):
+    player = Player.query.get_or_404(id)
+    return {'name': player.name, 'country': player.country, 'position': player.position}
+   
