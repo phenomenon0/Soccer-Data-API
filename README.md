@@ -1,33 +1,30 @@
-Soccer Players Database API
-Overview
+# Soccer Players Database API
+### Overview
 The Soccer Players Database API is designed to provide information about soccer players, including their profiles, statistics, and other relevant details. This API is built using Flask, a lightweight and easy-to-use web framework for Python.
 
-Getting Started
+## Getting Started
 To get started with the Soccer Players Database API, follow these steps:
 
-Prerequisites
+## Prerequisites
 Python 3.x
 Flask
 Installation
 Clone the repository:
 
-bash
-Copy code
+ 
+ 
 git clone https://github.com/your-username/soccer-players-api.git
 Navigate to the project directory:
 
-bash
-Copy code
+ 
 cd soccer-players-api
 Install dependencies:
 
-bash
-Copy code
+ 
 pip install -r requirements.txt
 Run the Flask application:
 
-bash
-Copy code
+ 
 python app.py
 The API will be running at http://localhost:5000/.
 
