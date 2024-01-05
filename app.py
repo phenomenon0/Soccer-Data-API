@@ -1,5 +1,6 @@
-from flask import Flask 
+from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
@@ -33,4 +34,18 @@ def get_players():
 def get_player(id):
     player = Player.query.get_or_404(id)
     return {'name': player.name, 'country': player.country, 'position': player.position}
-   
+
+@app.route('/players', methods=['GET','POST'])
+def add_player():
+    player = Player(name=request.json['name'], country=request.json['country'], position=request.json['position'])
+    db.session.add(player)
+    db.session.commit()
+    return {'id': player.id}
+@app.route('/players/<id>', methods=['DELETE'])
+def delete_player(id):
+    player = Player.query.get(id)
+    if player is None:
+        return {'error': 'not found'}
+    db.session.delete(player)
+    db.session.commit()
+    return {'message': 'success'}
